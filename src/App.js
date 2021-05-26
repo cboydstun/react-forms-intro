@@ -8,8 +8,8 @@ export default function App() {
         lastName: '',
         email: '',
     });
-
     const [submitted, setSubmitted] = useState(false);
+    const [valid, setValid] = useState(false);
 
     const handleFirstNameInputChange = (event) => {
         event.persist();
@@ -35,15 +35,17 @@ export default function App() {
         }));
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if(values.firstName && values.lastName && values.email) {
+            setValid(true);
+        }
         setSubmitted(true);
     }
 
     return (
     <div class="form-container">
       <form class="register-form" onSubmit={handleSubmit}>
-        {/* Uncomment the next line to show the success message */}
         <input
           id="first-name"
           class="form-field"
@@ -55,8 +57,6 @@ export default function App() {
         />
         {submitted && !values.firstName && <span id='first-name-error'>Please enter a first name</span>}
 
-        {/* Uncomment the next line to show the error message */}
-        {/* <span id="first-name-error">Please enter a first name</span> */}
         <input
           id="last-name"
           class="form-field"
@@ -67,7 +67,6 @@ export default function App() {
           onChange={handleLastNameInputChange}
         />
         {submitted && !values.lastName && <span id='last-name-error'>Please enter a last name</span>}
-
 
         <input
           id="email"
@@ -84,9 +83,7 @@ export default function App() {
           Register
         </button>
       </form>
-    
-    {submitted && <div class='success-message'>Success! Thank you for registering</div>}
-
+    {valid && <div class='success-message'>Success! Thank you for registering</div>}
     </div>
     )
 }
