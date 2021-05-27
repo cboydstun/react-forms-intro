@@ -1,7 +1,15 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  background: #76b852;
+  background: dodgerblue;
   display: flex;
   min-height: 100vh;
   justify-content: center;
@@ -14,6 +22,7 @@ body {
   margin: auto;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   padding: 10px;
+  border-radius: 2rem;
 }
 
 .register-form {
@@ -25,7 +34,7 @@ body {
 
 .success-message {
   font-family: 'Roboto', sans-serif;
-  background-color: #3f89f8;
+  background-color: lightgreen;
   padding: 15px;
   color: white;
 }
@@ -55,8 +64,9 @@ input {
 }
 
 button {
-  background: #4caf50;
+  background: lightgreen;
   color: white;
+  border-radius: 1rem;
   cursor: pointer;
 }
 
